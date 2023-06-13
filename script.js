@@ -18,5 +18,5 @@ function compSelec() {
 
 function playerSelec() {
     var playChoice = prompt("Rock, Paper, or Scissors");
-    console.log(playChoice);
+    console.log(playChoice.toLowerCase());
 }
