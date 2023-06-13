@@ -1,4 +1,4 @@
-function getComp() {
+function getComputerSelection() {
     var compNum = Math.floor(Math.random() * 3) + 1;
     switch (compNum) {
         case 1:
@@ -10,45 +10,45 @@ function getComp() {
     }
 }
 
-function getPlayer() {
+function getPlayerSelection() {
     var playChoice = prompt("Rock, Paper, or Scissors");
     return (playChoice.toLowerCase());
 }
 
 function playRound() {
-    if (playerSelec == compSelec)
+    if (playerSelection == computerSelection)
         return ("tie");
-    else if ((playerSelec == "rock" && compSelec == "scissors") || (playerSelec == "paper" && compSelec == "rock") || (playerSelec == "scissors" && compSelec == "paper"))
+    else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper"))
         return ("player");
-    else if ((playerSelec == "rock" && compSelec == "paper") || (playerSelec == "paper" && compSelec == "scissors") || (playerSelec == "scissors" && compSelec == "rock"))
+    else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock"))
         return ("computer");
 }
 
 function game() {
-    var playerwins = 0;
+    var playerWins = 0;
     var tie = 0;
-    var computerwins = 0;
+    var computerWins = 0;
 
     for (let i = 0; i < 5; i++) {
-        playerSelec = getPlayer();
-        compSelec = getComp();
+        playerSelection = getPlayerSelection();
+        computerSelection = getComputerSelection();
         if (playRound() == "tie")
             tie++;
         else if (playRound() == "player")
-            playerwins++;
+            playerWins++;
         else if (playRound() == "computer")
-            computerwins++;
+            computerWins++;
     }
     
     console.log("Results:");
-    console.log("Your wins: " + playerwins);
-    console.log("Computer wins: " + computerwins);
+    console.log("Your wins: " + playerWins);
+    console.log("Computer wins: " + computerWins);
     console.log("Tied games: " + tie);
-    if (playerwins > computerwins)
+    if (playerWins > computerWins)
         console.log("Damn you're like that huh")
-    else if (playerwins < computerwins)
+    else if (playerWins < computerWins)
         console.log("Imagine losing to a bot....")
-    else if (playerwins == computerwins)
+    else if (playerWins == computerWins)
         console.log("Atleast you didn't lose")
 }
 game();
