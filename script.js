@@ -17,20 +17,32 @@ function getPlayer() {
 
 function playRound() {
     if (playerSelec == compSelec)
-        return ("it's a tie");
+        return ("tie");
     else if ((playerSelec == "rock" && compSelec == "scissors") || (playerSelec == "paper" && compSelec == "rock") || (playerSelec == "scissors" && compSelec == "paper"))
-        return ("player wins");
+        return ("player");
     else if ((playerSelec == "rock" && compSelec == "paper") || (playerSelec == "paper" && compSelec == "scissors") || (playerSelec == "scissors" && compSelec == "rock"))
-        return ("computer wins");
-    else 
-        return ("you broke something lmao")
+        return ("computer");
 }
 
 function game() {
+    var playerwins = 0;
+    var tie = 0;
+    var computerwins = 0;
+
     for (let i = 0; i < 5; i++){
         playerSelec = getPlayer();
         compSelec = getComp();
-        console.log(playRound());
+        if (playRound() == "tie")
+            tie++;
+        else if (playRound() == "player")
+            playerwins++;
+        else if (playRound() == "computer")
+            computerwins++;
     }
+    
+    console.log("Results:");
+    console.log("Player wins: " + playerwins);
+    console.log("Computer wins: " + computerwins);
+    console.log("Tied games: " + tie);
 }
 game();
