@@ -22,11 +22,11 @@ function getPlayer() {
 }
 
 function playRound(playerSelec, compSelec) {
-    if (playerSelec == compSelec) {
+    if (playerSelec == compSelec) 
         console.log("it's a tie");
-    }
-    else {
-        console.log("lol");
-    }
+    else if ((playerSelec == "rock" && compSelec == "scissors") || (playerSelec == "paper" && compSelec == "rock") || (playerSelec == "scissors" && compSelec == "paper"))
+        console.log("player wins")
+    else 
+        console.log("computer wins")
 }
 console.log(playRound(playerSelec, compSelec));
