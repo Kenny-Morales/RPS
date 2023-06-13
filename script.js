@@ -29,7 +29,7 @@ function game() {
     var tie = 0;
     var computerwins = 0;
 
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++) {
         playerSelec = getPlayer();
         compSelec = getComp();
         if (playRound() == "tie")
@@ -41,8 +41,14 @@ function game() {
     }
     
     console.log("Results:");
-    console.log("Player wins: " + playerwins);
+    console.log("Your wins: " + playerwins);
     console.log("Computer wins: " + computerwins);
     console.log("Tied games: " + tie);
+    if (playerwins > computerwins)
+        console.log("Damn you're like that huh")
+    else if (playerwins < computerwins)
+        console.log("Imagine losing to a bot....")
+    else if (playerwins == computerwins)
+        console.log("Atleast you didn't lose")
 }
 game();
