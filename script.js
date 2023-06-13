@@ -15,5 +15,8 @@ function compSelec() {
             return ("you broke it");
     }
 }
-compSelec();
-    
+
+function playerSelec() {
+    var playChoice = prompt("Rock, Paper, or Scissors");
+    console.log(playChoice);
+}
