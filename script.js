@@ -1,22 +1,32 @@
-function compSelec() {
+const playerSelec = getPlayer();
+const compSelec = getComp();
+
+function getComp() {
     var compNum = Math.floor(Math.random() * 3) + 1;
     console.log(compNum);
     switch (compNum) {
         case 1:
-            console.log("rock");
-            break;
+            return ("rock");
         case 2:
-            console.log("paper");
-            break;
+            return ("paper");
         case 3:
-            console.log("scissors");
-            break;
+            return ("scissors");
         default:
             return ("you broke it");
     }
 }
 
-function playerSelec() {
+function getPlayer() {
     var playChoice = prompt("Rock, Paper, or Scissors");
-    console.log(playChoice.toLowerCase());
+    return (playChoice.toLowerCase());
 }
+
+function playRound(playerSelec, compSelec) {
+    if (playerSelec == compSelec) {
+        console.log("it's a tie");
+    }
+    else {
+        console.log("lol");
+    }
+}
+console.log(playRound(playerSelec, compSelec));
