@@ -1,6 +1,7 @@
 let playerWins = 0;
 let computerWins = 0;
 let ties = 0;
+let playerSelection = null;
 
 const playerResults = document.querySelector("#player");
 const computerResults = document.querySelector("#computer");
