@@ -1,54 +1,69 @@
-function getComputerSelection() {
-    var compNum = Math.floor(Math.random() * 3) + 1;
-    switch (compNum) {
-        case 1:
-            return ("rock");
-        case 2:
-            return ("paper");
-        case 3:
-            return ("scissors");
-    }
+let playerWins = 0;
+let computerWins = 0;
+let ties = 0;
+
+const playerResults = document.querySelector("#player");
+const computerResults = document.querySelector("#computer");
+const tiedResults = document.querySelector("#ties");
+
+function getPlayerSelection(selection) {
+    playerSelection = selection;
+    playRound();
+    score();
 }
 
-function getPlayerSelection() {
-    var playChoice = prompt("Rock, Paper, or Scissors");
-    return (playChoice.toLowerCase());
+function getComputerSelection() {
+    var computerNumber = Math.floor(Math.random() * 3) + 1;
+    switch (computerNumber) {
+        case 1:
+            return "rock";
+        case 2:
+            return "paper";
+        case 3:
+            return "scissors";
+    }
 }
 
 function playRound() {
-    if (playerSelection == computerSelection)
-        return ("tie");
-    else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock") || (playerSelection == "scissors" && computerSelection == "paper"))
-        return ("player");
-    else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock"))
-        return ("computer");
+    var computerSelection = getComputerSelection();
+    if (playerSelection === computerSelection) 
+        return 1;
+    else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")
+    )
+        return 2;
+    else
+        return 3;
 }
 
-function game() {
-    var playerWins = 0;
-    var tie = 0;
-    var computerWins = 0;
-
-    for (let i = 0; i < 5; i++) {
-        playerSelection = getPlayerSelection();
-        computerSelection = getComputerSelection();
-        if (playRound() == "tie")
-            tie++;
-        else if (playRound() == "player")
-            playerWins++;
-        else if (playRound() == "computer")
-            computerWins++;
+function score() {
+    switch (playRound()) {
+        case 1:
+            console.log("Tie");
+            ties += 1;
+            tiedResults.textContent = ties;
+            break;
+        case 2:
+            console.log("Player wins");
+            playerWins += 1;
+            playerResults.textContent = playerWins;
+            break;
+        case 3:
+            console.log("Computer wins");
+            computerWins += 1;
+            computerResults.textContent = computerWins;
+            break;
     }
-    
-    console.log("Results:");
-    console.log("Your wins: " + playerWins);
-    console.log("Computer wins: " + computerWins);
-    console.log("Tied games: " + tie);
-    if (playerWins > computerWins)
-        console.log("Damn you're like that huh")
-    else if (playerWins < computerWins)
-        console.log("Imagine losing to a bot....")
-    else if (playerWins == computerWins)
-        console.log("Atleast you didn't lose")
 }
-game();
+
+document.getElementById("rock").addEventListener("click", () => {
+    getPlayerSelection("rock");
+});
+document.getElementById("paper").addEventListener("click", () => {
+    getPlayerSelection("paper");
+});
+document.getElementById("scissors").addEventListener("click", () => {
+    getPlayerSelection("scissors");
+});
