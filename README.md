@@ -2,7 +2,7 @@
 
 A simple web-based Rock, Paper, Scissors game where you can challenge the computer!
 
-Website: 
+Website: https://knnymrls.github.io/Rock-Paper-Scissors/
 
 ## Features
 
